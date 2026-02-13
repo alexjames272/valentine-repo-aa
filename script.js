@@ -1,58 +1,74 @@
-// The "Love Gauntlet" List
-const loveItems = [
-    "Chips & Cheese 🧀",
-    "Louis Vuitton 👜",
-    "Love Island 🏝️",
-    "A good book 📚",
-    "Chicago & Nashville combined 🏙️🤠"
+// The Data: Questions and matching Images
+const questions = [
+    {
+        text: "Chips & Cheese 🧀",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ5KChqMHhc_8KQOWE8HrzsSx3ee5C47ALqQ&s"
+    },
+    {
+        text: "Louis Vuitton 👜",
+        // I used a nice LV bag image here
+        image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60"
+    },
+    {
+        text: "Love Island 🏝️",
+        // I used the Love Island Logo here
+        image: "https://upload.wikimedia.org/wikipedia/en/3/38/Love_Island_2015_logo.png"
+    },
+    {
+        text: "A good book 📚",
+        image: "https://i.ebayimg.com/images/g/V5MAAeSwzEppaYcS/s-l1600.webp"
+    },
+    {
+        text: "Chicago & Nashville combined 🏙️🤠",
+        // A cool cowboy/city aesthetic image
+        image: "https://images.unsplash.com/photo-1555529733-0e670560f7e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60"
+    }
 ];
 
 let currentIndex = 0;
 
 const questionText = document.getElementById("question-text");
+const mainImage = document.getElementById("main-image");
 const noBtn = document.getElementById("noBtn");
 const gameContainer = document.getElementById("game-container");
 const successContainer = document.getElementById("success-container");
-const mainGif = document.getElementById("main-gif");
 
-// Initialize first question
+// Initialize
 updateQuestion();
 
 function updateQuestion() {
-    if (currentIndex < loveItems.length) {
-        questionText.innerText = `Do you love me more than ${loveItems[currentIndex]}?`;
-        // Optional: Change GIF here if you want specific ones for specific questions
+    if (currentIndex < questions.length) {
+        questionText.innerText = `Do you love me more than ${questions[currentIndex].text}?`;
+        mainImage.src = questions[currentIndex].image;
     } else {
+        // The Final Question
         questionText.innerText = "Okay... will you be my Valentine? 🌹";
-        mainGif.src = "https://media.tenor.com/kaCNrX9wN3gAAAAi/cute-begging.gif"; // Begging GIF
+        // This is the "Begging Cat" GIF for the final question
+        mainImage.src = "https://media.tenor.com/kaCNrX9wN3gAAAAi/cute-begging.gif";
     }
 }
 
 function nextQuestion() {
-    if (currentIndex < loveItems.length) {
-        // Move to next item
+    if (currentIndex < questions.length) {
         currentIndex++;
         updateQuestion();
         
-        // RESET the "No" button position so it tempts her again
+        // Reset No button to center
         noBtn.style.position = "static";
-        
     } else {
-        // Only here does the game end
+        // Success!
         gameContainer.classList.add("hidden");
         successContainer.classList.remove("hidden");
         triggerConfetti();
     }
 }
 
-// The "No" button runs away
+// Runaway No Button Logic
 function moveButton() {
-    // Get container boundaries
     const containerRect = document.querySelector('.container').getBoundingClientRect();
     const btnRect = noBtn.getBoundingClientRect();
 
-    // Calculate max positions
-    const maxX = containerRect.width - btnRect.width - 20; // -20 for padding
+    const maxX = containerRect.width - btnRect.width - 20;
     const maxY = containerRect.height - btnRect.height - 20;
 
     const randomX = Math.floor(Math.random() * maxX);
@@ -63,7 +79,7 @@ function moveButton() {
     noBtn.style.top = randomY + "px";
 }
 
-// Confetti Effect
+// Confetti Configuration
 function triggerConfetti() {
     const duration = 3 * 1000;
     const animationEnd = Date.now() + duration;
