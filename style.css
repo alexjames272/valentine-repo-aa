@@ -23,12 +23,21 @@ body {
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     max-width: 90%;
     width: 450px;
-    position: relative; /* Essential for button movement */
-    min-height: 400px; /* Keeps box size stable */
+    position: relative;
+    min-height: 450px; /* Made slightly taller for pictures */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.main-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover; /* This makes sure the images don't look squished */
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .gif {
@@ -50,7 +59,7 @@ body {
     justify-content: center;
     gap: 20px;
     width: 100%;
-    position: relative; /* Anchor for the buttons */
+    position: relative;
     height: 60px;
 }
 
@@ -63,7 +72,7 @@ body {
     transition: transform 0.2s ease;
     font-weight: bold;
     height: 50px;
-    width: 100px; /* Fixed width prevents resizing issues */
+    width: 100px;
 }
 
 .yes-btn {
@@ -81,7 +90,7 @@ body {
 .no-btn {
     background-color: #e0e0e0;
     color: #333;
-    transition: 0.1s; /* Faster transition for the run-away effect */
+    transition: 0.1s;
 }
 
 .hidden {
