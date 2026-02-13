@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Be My Valentine?</title>
+    <title>A Question...</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="container">
-        <div id="ask-container">
-            <img src="https://media.tenor.com/F0UWhr7M5u4AAAAi/cute-cat.gif" alt="Cute Cat" class="gif" id="main-gif">
-            <h1 class="header-text">Will you be my Valentine?</h1>
-            <div class="buttons">
-                <button class="btn yes-btn" onclick="sayYes()">Yes</button>
-                <button class="btn no-btn" id="noBtn" onmouseover="moveButton()">No</button>
+        
+        <div id="game-container">
+            <img src="https://media.tenor.com/F0UWhr7M5u4AAAAi/cute-cat.gif" alt="Cute GIF" class="gif" id="main-gif">
+            
+            <h1 class="header-text" id="question-text">Loading...</h1>
+            
+            <div class="buttons-container">
+                <button class="btn yes-btn" onclick="nextQuestion()">Yes</button>
+                <button class="btn no-btn" id="noBtn" onmouseover="moveButton()" ontouchstart="moveButton()">No</button>
             </div>
         </div>
 
@@ -23,6 +26,7 @@
             <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="Bear Kiss" class="gif">
             <h1 class="header-text">Yay! See you on the 14th! ❤️</h1>
         </div>
+        
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
